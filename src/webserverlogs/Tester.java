@@ -31,5 +31,18 @@ public class Tester {
         int uniqueIPs = la.countUniqueIP();
         System.out.println("There are " + uniqueIPs + " IPs");
     }
+    
+    public void testPrintAllHigherThanNum(int num){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("short-test_log.txt");
+        LogAnalyzer.printAllHigherThanNum(num);
+    }
+    
+    public void testUniqueIPVisitsOnDay(String someday) {
+        LogAnalyzer log = new LogAnalyzer();
+        log.readFile("weblog-short_log.txt");
+        log.countUniqueIP();
+        LogAnalyzer.uniqueIPVisitsOnDay(someday);
+    }
 
 }

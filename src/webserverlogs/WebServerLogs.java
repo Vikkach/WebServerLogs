@@ -15,6 +15,6 @@ public class WebServerLogs {
      */
     public static void main(String[] args) {
         Tester test = new Tester();
-        test.testUniqueIP();
+        test.testUniqueIPVisitsOnDay("Sep 30");
     }
 }
