@@ -41,8 +41,13 @@ public class Tester {
     public void testUniqueIPVisitsOnDay(String someday) {
         LogAnalyzer log = new LogAnalyzer();
         log.readFile("weblog-short_log.txt");
-        log.countUniqueIP();
         LogAnalyzer.uniqueIPVisitsOnDay(someday);
+    }
+    
+    public void testCountUniqueIPsInRange(int low, int high){
+        LogAnalyzer log = new LogAnalyzer();
+        log.readFile("short-test_log.txt");
+        System.out.println(LogAnalyzer.countUniqueIPsInRange(low, high));
     }
 
 }

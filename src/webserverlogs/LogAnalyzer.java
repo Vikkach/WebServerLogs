@@ -57,18 +57,28 @@ public class LogAnalyzer {
     
     public static ArrayList<String> uniqueIPVisitsOnDay(String someday){
         ArrayList<String> uniqueIPVisitsOnDay = new ArrayList<>();
+        uniqueIPVisitsOnDay.clear();
         for (LogEntry le : records) {
             String ipAddr = le.getIpAddress();
-            System.out.println(le.toString().indexOf(ipAddr));
-            if (uniqueIPVisitsOnDay.contains(ipAddr)){
-                String date = le.getAccessTime().toString();
-                if (date.indexOf(someday) != -1){
-                    uniqueIPVisitsOnDay.add(le.toString());
+            String date = le.getAccessTime().toString();
+                if (date.contains(someday) && !uniqueIPVisitsOnDay.contains(ipAddr)){
+                    uniqueIPVisitsOnDay.add(ipAddr);
                     System.out.println(le);
-                }
             }
         }
         return uniqueIPVisitsOnDay;
+    }
+    
+    public static int countUniqueIPsInRange(int low, int high){
+        ArrayList<String> uniqueIPs = new ArrayList<>();
+        for (LogEntry le : records) {
+             int statusCode= le.getStatusCode();
+             String ipAddr = le.getIpAddress();
+             if(statusCode >= low &&  statusCode <= high && !uniqueIPs.contains(ipAddr)){
+                 uniqueIPs.add(ipAddr);
+             }
+         }
+        return uniqueIPs.size();
     }
     
 
